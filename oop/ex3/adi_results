@@ -1,0 +1,85 @@
+Time to add elements from data1 to OpenHashSet@45ee12a7: 90713 ms
+Time to add elements from data1 to ClosedHashSet@330bedb4: 502962 ms
+Time to add elements from data1 to Facade<TreeSet>: 60 ms
+Time to add elements from data1 to Facade<HashSet>: 55 ms
+Time to check contains in OpenHashSet@45ee12a7: 23 ns
+Time to check contains in ClosedHashSet@330bedb4: 9 ns
+Time to check contains in Facade<TreeSet>: 52 ns
+Time to check contains in Facade<HashSet>: 8 ns
+Time to check contains in LinkedList): 9ns
+Time to check contains in OpenHashSet@45ee12a7: 428069 ns
+Time to check contains in ClosedHashSet@330bedb4: 1094831 ns
+Time to check contains in Facade<TreeSet>: 83 ns
+Time to check contains in Facade<HashSet>: 13 ns
+Time to check contains in LinkedList): 3ns
+Time to add elements from data2 to OpenHashSet@2503dbd3: 14 ms
+Time to add elements from data2 to ClosedHashSet@4b67cf4d: 80 ms
+Time to add elements from data2 to Facade<TreeSet>: 45 ms
+Time to add elements from data2 to Facade<HashSet>: 6 ms
+Time to check contains in OpenHashSet@2503dbd3: 18 ns
+Time to check contains in ClosedHashSet@4b67cf4d: 9 ns
+Time to check contains in Facade<TreeSet>: 26 ns
+Time to check contains in Facade<HashSet>: 13 ns
+Time to check contains in LinkedList): 10ns
+Time to check contains in OpenHashSet@2503dbd3: 4 ns
+Time to check contains in ClosedHashSet@4b67cf4d: 16 ns
+Time to check contains in Facade<TreeSet>: 47 ns
+Time to check contains in Facade<HashSet>: 11 ns
+Time to check contains in LinkedList): 10ns
+
+
+~*~*~ based on this code: ~*~*~
+
+
+// tests on sets with data1
+addData1ToAllSets(setsForData1);
+performContainsOnSets(setsForData1, "hi");
+measureTimeContainsLinkedList(linkedListData1, "hi");
+performContainsOnSets(setsForData1,"-13170890158");
+measureTimeContainsLinkedList(linkedListData1, "-13170890158");
+
+
+// tests on sets with data2
+addData2ToAllSets(setsForData2);
+performContainsOnSets(setsForData2, "23");
+measureTimeContainsLinkedList(linkedListData1, "23");
+performContainsOnSets(setsForData2, "hi");
+measureTimeContainsLinkedList(linkedListData1, "hi");
+
+
+~*~*~ than i added info for the strings and ran again, for you to have some accurate data ~*~*~
+
+Time to add elements from data1 to OpenHashSet@45ee12a7: 87735 ms
+Time to add elements from data1 to ClosedHashSet@330bedb4: 525837 ms
+Time to add elements from data1 to Facade<TreeSet>: 61 ms
+Time to add elements from data1 to Facade<HashSet>: 58 ms
+Time to check contains in OpenHashSet@45ee12a7, for word ''hi'': 22 ns
+Time to check contains in ClosedHashSet@330bedb4, for word ''hi'': 10 ns
+Time to check contains in Facade<TreeSet>, for word ''hi'': 56 ns
+Time to check contains in Facade<HashSet>, for word ''hi'': 7 ns
+Time to check contains in LinkedList): 8ns
+Time to check contains in OpenHashSet@45ee12a7, for word ''-13170890158'': 558461 ns
+Time to check contains in ClosedHashSet@330bedb4, for word ''-13170890158'': 1564834 ns
+Time to check contains in Facade<TreeSet>, for word ''-13170890158'': 90 ns
+Time to check contains in Facade<HashSet>, for word ''-13170890158'': 14 ns
+Time to check contains in LinkedList): 3ns
+Time to add elements from data2 to OpenHashSet@2503dbd3: 14 ms
+Time to add elements from data2 to ClosedHashSet@4b67cf4d: 85 ms
+Time to add elements from data2 to Facade<TreeSet>: 51 ms
+Time to add elements from data2 to Facade<HashSet>: 6 ms
+Time to check contains in OpenHashSet@2503dbd3, for word ''23'': 17 ns
+Time to check contains in ClosedHashSet@4b67cf4d, for word ''23'': 11 ns
+Time to check contains in Facade<TreeSet>, for word ''23'': 86 ns
+Time to check contains in Facade<HashSet>, for word ''23'': 19 ns
+Time to check contains in LinkedList): 10ns
+Time to check contains in OpenHashSet@2503dbd3, for word ''hi'': 4 ns
+Time to check contains in ClosedHashSet@4b67cf4d, for word ''hi'': 16 ns
+Time to check contains in Facade<TreeSet>, for word ''hi'': 44 ns
+Time to check contains in Facade<HashSet>, for word ''hi'': 5 ns
+Time to check contains in LinkedList): 4ns
+
+
+
+p.s.
+I love you <3
+
