@@ -9,7 +9,7 @@ import java.util.Iterator;
  */
 public abstract class BinarySearchTree implements Iterable<Integer>{
 
-    private static final int DATA_NOT_IN_TREE = -1;
+    protected static final int DATA_NOT_IN_TREE = -1;
 
     protected Node root;
     private int numOfNodes = 0;
