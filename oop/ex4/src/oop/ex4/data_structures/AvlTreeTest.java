@@ -18,12 +18,12 @@ public class AvlTreeTest {
     @Before
     public void setUp() {
         emptyTree = new AvlTree();
-        treeWith0123456789 = new AvlTree(new int[]{1,2,3,4,5,6,7,8,9});
+        treeWith0123456789 = new AvlTree(new int[]{0,1,2,3,4,5,6,7,8,9});
     }
 
     @Test
     public void findMinNodes() {
-        assertEquals(12, AvlTree.findMinNodes(6));
+        assertEquals(AvlTree.findMinNodes(6), AvlTree.findMinNodes(5) + AvlTree.findMinNodes(4) + 1);
     }
 
     @Test
@@ -54,13 +54,13 @@ public class AvlTreeTest {
 
     @Test
     public void size() {
-        int maxNumToRun = 128;
+        int maxNumToRun = 1024;
         for (int i = 0; i <= maxNumToRun; i++) {
             assertEquals(emptyTree.size(), i);
             emptyTree.add(i);
         }
-        for (int i = maxNumToRun; i >= 0; i--) {
-            assertEquals(i, emptyTree.size());
+        for (int i = maxNumToRun; i >= 1; i--) {
+            assertEquals(i + 1, emptyTree.size());
             emptyTree.delete(i);
         }
     }
@@ -108,8 +108,10 @@ public class AvlTreeTest {
 
     @Test
     public void workOn128Elements() {
+        int maxNum = 8;
+
         List<Integer> allUpTo128shuffled = new ArrayList<>();
-        for (int i = 0; i < 128; i++) {
+        for (int i = 0; i < maxNum; i++) {
             allUpTo128shuffled.add(i);
         }
         shuffle(allUpTo128shuffled);
@@ -119,9 +121,9 @@ public class AvlTreeTest {
             assertFalse(emptyTree.add(i));
         }
 
-        assertEquals(128, emptyTree.size());
+        assertEquals(maxNum, emptyTree.size());
 
-        for (int i = 0; i < 128; i++) {
+        for (int i = 0; i < maxNum; i++) {
             assertNotEquals(-1, emptyTree.contains(allUpTo128shuffled.get(i)));
         }
 
@@ -150,13 +152,14 @@ public class AvlTreeTest {
 
     @Test
     public void onlyOddNumbers() {
-        for (int i = 0; i < 128; i++) {
+        int maxNum = 1024;
+        for (int i = 0; i < maxNum; i++) {
             if (i % 2 == 0) {
                 assertTrue(emptyTree.add(i));
             }
         }
 
-        for (int i = 0; i < 128; i++) {
+        for (int i = 0; i < maxNum; i++) {
             if (i % 2 == 0) {
                 assertTrue(emptyTree.contains(i) >= 0);
             } else {
@@ -164,9 +167,9 @@ public class AvlTreeTest {
             }
         }
 
-        assertEquals(128%2, emptyTree.size());
+        assertEquals(maxNum/2, emptyTree.size());
 
-        for (int i = 0; i < 128; i++) {
+        for (int i = 0; i < maxNum; i++) {
             if (i % 2 == 0) {
                 assertTrue(emptyTree.delete(i));
             } else {
@@ -180,6 +183,7 @@ public class AvlTreeTest {
 
 
     private static void shuffle(List<Integer> input) {
-        Collections.shuffle(input);
+        Random rnd = new Random();
+        Collections.shuffle(input, rnd);
     }
 }

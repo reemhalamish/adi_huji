@@ -48,4 +48,9 @@ public class Node {
     public int getHeight() { return height; }
 
     public void setHeight(int height) { this.height = height; }
+
+    @Override
+    public String toString() {
+        return String.format("{%d}", data);
+    }
 }
