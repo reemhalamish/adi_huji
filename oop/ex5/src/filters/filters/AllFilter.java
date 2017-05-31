@@ -1,13 +1,14 @@
-package filters;
+package filters.filters;
 
 import filesprocessing.FileInfo;
 
 /**
  * Created by adi on 25/05/17.
  */
-public class WritableFilter implements Filter {
+public class AllFilter implements Filter {
+
     @Override
     public boolean filter(FileInfo toFilter) {
-        return toFilter.writable;
+        return true;
     }
 }

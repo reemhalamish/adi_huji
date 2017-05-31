@@ -1,16 +1,16 @@
-package filters;
+package filters.filters;
 
 import filesprocessing.FileInfo;
 
 /**
  * Created by adi on 25/05/17.
  */
-public class GreaterThanFilter implements Filter {
+public class SmallerThanFilter implements Filter {
 
     /* fields */
     double lowerBound;
 
-    public GreaterThanFilter(double lowerBound) {
+    public SmallerThanFilter(double lowerBound) {
         this.lowerBound = lowerBound;
     }
 
@@ -18,4 +18,7 @@ public class GreaterThanFilter implements Filter {
     public boolean filter(FileInfo toFilter) {
         return false;
     }
+
+
+
 }

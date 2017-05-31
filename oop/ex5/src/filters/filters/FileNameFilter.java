@@ -1,4 +1,4 @@
-package filters;
+package filters.filters;
 
 import filesprocessing.FileInfo;
 

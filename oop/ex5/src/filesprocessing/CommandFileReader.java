@@ -17,6 +17,8 @@ public class CommandFileReader {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+
         return listOfSections;
     }
 }

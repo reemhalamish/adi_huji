@@ -18,6 +18,7 @@ public class FileInfo {
     public boolean writable;
     public boolean executable;
     public boolean hidden;
+    public String absolutePath;
 
 
     public FileInfo(File file) {
@@ -26,6 +27,6 @@ public class FileInfo {
         this.writable = file.canWrite();
         this.executable = file.canExecute();
         this.hidden = file.isHidden();
-
+        this.absolutePath = file.getAbsolutePath();
     }
 }

@@ -8,8 +8,8 @@ import java.util.List;
 public class Section {
 
     /* fields */
-    int firstLineNum;
-    List<String > listOfLines;
+    private int firstLineNum;
+    private List<String > listOfLines;
 
     public Section(int firstLineNum, List<String> listOfLines) {
         this.firstLineNum = firstLineNum;
