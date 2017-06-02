@@ -8,7 +8,7 @@ import filesprocessing.FileInfo;
 public class PrefixFilter implements Filter {
 
     /* fields */
-    String prefix;
+    private String prefix;
 
     public PrefixFilter(String prefix) {
         this.prefix = prefix;

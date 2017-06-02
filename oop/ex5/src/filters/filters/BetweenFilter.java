@@ -9,8 +9,8 @@ import filesprocessing.FileInfo;
 public class BetweenFilter implements Filter {
 
     /* fields */
-    double lowerSize;
-    double upperSize;
+    private double lowerSize;
+    private double upperSize;
 
     public BetweenFilter(String lowerSize, String upperSize) throws FilterException {
         try {
@@ -19,11 +19,13 @@ public class BetweenFilter implements Filter {
             if (this.lowerSize >=0 && this.upperSize >= this.lowerSize) {
                 return;
             } else { throw new FilterException(); }
-        } catch (NumberFormatException | NullPointerException exception){ throw new FilterException();}
+        } catch (NumberFormatException | NullPointerException exception){
+            throw new FilterException();
+        }
     }
 
     @Override
     public boolean filter(FileInfo toFilter) {
-        return false;
+        return lowerSize <= toFilter.size && toFilter.size<= upperSize;
     }
 }

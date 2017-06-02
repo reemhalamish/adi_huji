@@ -1,5 +1,6 @@
 package filters.filters;
 
+import exceptions.FilterException;
 import filesprocessing.FileInfo;
 
 /**
@@ -8,10 +9,10 @@ import filesprocessing.FileInfo;
 public class FileNameFilter implements Filter {
 
     /* fields */
-    String fileName;
+    private String fileName;
 
     public FileNameFilter(String fileName) {
-        this.fileName = fileName;
+            this.fileName = fileName;
     }
 
     @Override

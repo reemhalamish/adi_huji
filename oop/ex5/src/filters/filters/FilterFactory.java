@@ -16,7 +16,7 @@ public class FilterFactory {
         if (splitFilterLine.length == 0) { throw new FilterException(); } // line is empty
         boolean isNot = splitFilterLine[splitFilterLine.length - 1].equals("NOT");
         String filterName = splitFilterLine[0];
-        Filter returnFilter = null;
+        Filter returnFilter;
 
         try {
             switch (filterName) {
@@ -25,6 +25,33 @@ public class FilterFactory {
                     break;
                 case "between":
                     returnFilter = new BetweenFilter(splitFilterLine[1], splitFilterLine[2]);
+                    break;
+                case "smaller_than":
+                    returnFilter = new SmallerThanFilter(splitFilterLine[1]);
+                    break;
+                case "file":
+                    returnFilter = new FileNameFilter(splitFilterLine[1]);
+                    break;
+                case "contains":
+                    returnFilter = new ContainsFilter(splitFilterLine[1]);
+                    break;
+                case "prefix":
+                    returnFilter = new PrefixFilter(splitFilterLine[1]);
+                    break;
+                case "suffix":
+                    returnFilter = new SuffixFilter(splitFilterLine[1]);
+                    break;
+                case "writable":
+                    returnFilter = new WritableFilter(splitFilterLine[1]);
+                    break;
+                case "executable":
+                    returnFilter = new ExecutableFilter(splitFilterLine[1]);
+                    break;
+                case "hidden":
+                    returnFilter = new HiddenFilter(splitFilterLine[1]);
+                    break;
+                case "all":
+                    returnFilter = new AllFilter();
                     break;
                 default:
                     throw new FilterException();

@@ -8,7 +8,7 @@ import filesprocessing.FileInfo;
 public class ContainsFilter implements Filter {
 
     /* fields */
-    String stringContained;
+    private String stringContained;
 
     public ContainsFilter(String stringContained) {
         this.stringContained = stringContained;

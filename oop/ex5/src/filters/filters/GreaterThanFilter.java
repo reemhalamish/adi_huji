@@ -9,7 +9,7 @@ import filesprocessing.FileInfo;
 public class GreaterThanFilter implements Filter {
 
     /* fields */
-    double lowerBound;
+    private double lowerBound;
 
     GreaterThanFilter(String lowerBound) throws FilterException {
         try {
@@ -26,6 +26,6 @@ public class GreaterThanFilter implements Filter {
 
     @Override
     public boolean filter(FileInfo toFilter) {
-        return false;
+        return toFilter.size >= lowerBound;
     }
 }

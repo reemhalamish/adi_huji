@@ -8,7 +8,7 @@ import filesprocessing.FileInfo;
 public class SuffixFilter implements Filter {
 
     /* fields */
-    String suffix;
+    private String suffix;
 
     public SuffixFilter(String suffix) {
         this.suffix = suffix;

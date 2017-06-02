@@ -1,5 +1,6 @@
 package filters.filters;
 
+import exceptions.FilterException;
 import filesprocessing.FileInfo;
 
 /**
@@ -8,15 +9,21 @@ import filesprocessing.FileInfo;
 public class SmallerThanFilter implements Filter {
 
     /* fields */
-    double lowerBound;
+    private double upperBound;
 
-    public SmallerThanFilter(double lowerBound) {
-        this.lowerBound = lowerBound;
-    }
+    public SmallerThanFilter(String upperBound) throws FilterException {
+       try {
+           this.upperBound = Double.valueOf(upperBound);
+           if ( this.upperBound < 0) { throw new FilterException(); }
+       }
+       catch (NumberFormatException | NullPointerException exception){
+           throw new FilterException(); }
+        }
+
 
     @Override
     public boolean filter(FileInfo toFilter) {
-        return false;
+        return toFilter.size <= upperBound;
     }
 
 
