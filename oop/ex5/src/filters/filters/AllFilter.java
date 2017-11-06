@@ -2,11 +2,13 @@ package filters.filters;
 
 import filesprocessing.FileInfo;
 
-/**
- * Created by adi on 25/05/17.
- */
-public class AllFilter implements Filter {
+class AllFilter implements Filter {
 
+    /**
+     * filters all files through.
+     * @param toFilter FileInfo to filter
+     * @return true
+     */
     @Override
     public boolean filter(FileInfo toFilter) {
         return true;

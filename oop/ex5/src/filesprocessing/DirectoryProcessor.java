@@ -12,14 +12,20 @@ import java.text.*;
  */
 public class DirectoryProcessor {
 
-    public static void main(String sourcedir, String commandFile) throws GeneralException {
-        // create commandFileReader to break commandfile to sections
-        CommandFileReader commandFileReader = new CommandFileReader();
-        List<Section> listOfSections = commandFileReader.breakToSections(commandFile);
+    public static void main(String sourcedir, String commandFile) {
+        try {
 
-        // process all sections from commandfile with SectionManager
-        SectionManager sectionManager = new SectionManager();
-        sectionManager.processAllSections(sourcedir, listOfSections);
+            // create commandFileReader to break commandfile to sections
+            CommandFileReader commandFileReader = new CommandFileReader();
+            List<Section> listOfSections = commandFileReader.breakToSections(commandFile);
+
+            // process all sections from commandfile with SectionManager
+            SectionManager sectionManager = new SectionManager();
+            sectionManager.processAllSections(sourcedir, listOfSections);
+
+        } catch (GeneralException ignored) {
+            return;
+        }
     }
 
 }

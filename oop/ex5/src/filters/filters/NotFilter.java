@@ -2,18 +2,25 @@ package filters.filters;
 
 import filesprocessing.FileInfo;
 
-/**
- * Created by Re'em on 5/27/2017.
- */
-public class NotFilter implements Filter{
+
+ class NotFilter implements Filter{
 
     /* fields */
-    Filter innerFilter;
+    private Filter innerFilter;
 
-    public NotFilter(Filter filter) {
+     /**
+      * Creates a filter that reverses the condition of the inner filter
+      * @param filter inner filter to reverse
+      */
+    NotFilter(Filter filter) {
         this.innerFilter = filter;
     }
 
+     /**
+      * reverses to boolean returned from the inner filter
+      * @param toFilter FileInfo to filter
+      * @return true if inner filter returns false, false if inner filter returns true.
+      */
     @Override
     public boolean filter(FileInfo toFilter) {
         return !innerFilter.filter(toFilter);

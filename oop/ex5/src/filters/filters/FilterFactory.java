@@ -2,53 +2,58 @@ package filters.filters;
 
 import exceptions.FilterException;
 
-/**
- * Created by reem on 31/05/17.
- */
-public class FilterFactory {
 
-    // TODO: 31/05/17  factory calls filter constructors, so erase public from all onstructors.
-    // implement case for all filters and change arguments to strings in constructors. do catch try for exceptions.
-    // magic numers here
+public class FilterFactory {
+    private static final int INDEX_FIRST_VALUE = 1;
+    private static final int INDEX_SECOND_VALUE = 2;
+    private static final int INDEX_FILTER_NAME = 0;
+
 
     public static Filter createFilter (String filterLine) throws FilterException {
         String[] splitFilterLine = filterLine.split("#");
-        if (splitFilterLine.length == 0) { throw new FilterException(); } // line is empty
+        if (splitFilterLine.length == 0) {
+            // line is empty
+            throw new FilterException();
+        }
+
+        // NOT condition should appear at the end of the filer line.
         boolean isNot = splitFilterLine[splitFilterLine.length - 1].equals("NOT");
-        String filterName = splitFilterLine[0];
+
+        String filterName = splitFilterLine[INDEX_FILTER_NAME];
         Filter returnFilter;
 
         try {
             switch (filterName) {
                 case "greater_than":
-                    returnFilter = new GreaterThanFilter(splitFilterLine[1]);
+                    returnFilter = new GreaterThanFilter(splitFilterLine[INDEX_FIRST_VALUE]);
                     break;
                 case "between":
-                    returnFilter = new BetweenFilter(splitFilterLine[1], splitFilterLine[2]);
+                    returnFilter = new BetweenFilter(splitFilterLine[INDEX_FIRST_VALUE],
+                            splitFilterLine[INDEX_SECOND_VALUE]);
                     break;
                 case "smaller_than":
-                    returnFilter = new SmallerThanFilter(splitFilterLine[1]);
+                    returnFilter = new SmallerThanFilter(splitFilterLine[INDEX_FIRST_VALUE]);
                     break;
                 case "file":
-                    returnFilter = new FileNameFilter(splitFilterLine[1]);
+                    returnFilter = new FileNameFilter(splitFilterLine[INDEX_FIRST_VALUE]);
                     break;
                 case "contains":
-                    returnFilter = new ContainsFilter(splitFilterLine[1]);
+                    returnFilter = new ContainsFilter(splitFilterLine[INDEX_FIRST_VALUE]);
                     break;
                 case "prefix":
-                    returnFilter = new PrefixFilter(splitFilterLine[1]);
+                    returnFilter = new PrefixFilter(splitFilterLine[INDEX_FIRST_VALUE]);
                     break;
                 case "suffix":
-                    returnFilter = new SuffixFilter(splitFilterLine[1]);
+                    returnFilter = new SuffixFilter(splitFilterLine[INDEX_FIRST_VALUE]);
                     break;
                 case "writable":
-                    returnFilter = new WritableFilter(splitFilterLine[1]);
+                    returnFilter = new WritableFilter(splitFilterLine[INDEX_FIRST_VALUE]);
                     break;
                 case "executable":
-                    returnFilter = new ExecutableFilter(splitFilterLine[1]);
+                    returnFilter = new ExecutableFilter(splitFilterLine[INDEX_FIRST_VALUE]);
                     break;
                 case "hidden":
-                    returnFilter = new HiddenFilter(splitFilterLine[1]);
+                    returnFilter = new HiddenFilter(splitFilterLine[INDEX_FIRST_VALUE]);
                     break;
                 case "all":
                     returnFilter = new AllFilter();
@@ -66,6 +71,10 @@ public class FilterFactory {
         }
     }
 
+    /**
+     * Creates the default filter
+     * @return the default filter
+     */
     public static Filter createDefaultFilter() {
         return new AllFilter();
     }

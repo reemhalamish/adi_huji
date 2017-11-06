@@ -16,13 +16,20 @@ import java.util.List;
 public class SectionManager {
 
     private static final String WARNING_MSG = "Warning in line ";
+    private static final int FILTER_LINE = 1;
+    private static final int ORDER_LINE = 3;
+
+    private static void printWarning(int lineNum){
+        System.err.println(WARNING_MSG + lineNum);
+
+    }
 
     private void processSection(String sourcedir, Section section) {
         Filter sectionFilter;
         try {
-            sectionFilter = FilterFactory.createFilter(section.getListOfLines().get(1)); }
+            sectionFilter = FilterFactory.createFilter(section.getListOfLines().get(FILTER_LINE)); }
         catch(FilterException exception){
-            printWarning(section.getFirstLineNum() + 1);
+            printWarning(section.getFirstLineNum() + FILTER_LINE);
             sectionFilter = FilterFactory.createDefaultFilter();
         }
 
@@ -30,31 +37,26 @@ public class SectionManager {
 
         Order sectionOrder;
         try {
-            sectionOrder = OrderFactory.createOrder(section.getListOfLines().get(3));
+            if (section.getListOfLines().size() == 3)
+                sectionOrder = OrderFactory.createDefaultOrder();
+            else
+                sectionOrder = OrderFactory.createOrder(section.getListOfLines().get(ORDER_LINE));
         } catch (OrderException exception){
-            printWarning(section.getFirstLineNum() + 3);
+            printWarning(section.getFirstLineNum() + ORDER_LINE);
             sectionOrder = OrderFactory.createDefaultOrder();
         }
 
+        List<FileInfo> orderedFileInfos = sectionOrder.sort(filteredFileInfos);
 
+        for(FileInfo info: orderedFileInfos) {
+            System.out.println(info.name);
+        }
 
     }
-    // as processing section, print warnings and then the files in order. section after section
-    // calls filter manager and order manager with appropriate line
-
-    //try to create filter with second line in section. throw warning if not succedded. else create filtermanager
-    // with second line and filter files in sourcedir.
-
-    //after calling OrderManager and sorting files print files by order in sorted list
-    //or in reversed order if #REVERSE appears in order line.**print file names here**
 
 
     public void processAllSections(String sourcedir, List<Section> listOfSections){
         for (Section section: listOfSections) { processSection(sourcedir, section);}
     }
 
-    private static void printWarning(int lineNum){
-        System.err.println(WARNING_MSG + lineNum);
-
-    }
 }

@@ -20,15 +20,6 @@ public class FileInfo {
     public boolean hidden;
     public String absolutePath;
 
-    public FileInfo(double size, String name, boolean writable, boolean executable, boolean hidden, String absolutePath) {
-        this.size = size/BYTES_TO_KB;
-        this.name = name;
-        this.writable = writable;
-        this.executable = executable;
-        this.hidden = hidden;
-        this.absolutePath = absolutePath;
-    }
-
     public FileInfo(File file) {
         this.name = file.getName();
         this.size = file.length()/BYTES_TO_KB;
@@ -36,5 +27,19 @@ public class FileInfo {
         this.executable = file.canExecute();
         this.hidden = file.isHidden();
         this.absolutePath = file.getAbsolutePath();
+    }
+
+    public String getType() {
+        String[] words = name.split("\\.");
+        return words[words.length - 1];
+    }
+
+    public FileInfo(double size, String name, boolean writable, boolean executable, boolean hidden, String absolutePath) {
+        this.size = size;
+        this.name = name;
+        this.writable = writable;
+        this.executable = executable;
+        this.hidden = hidden;
+        this.absolutePath = absolutePath;
     }
 }

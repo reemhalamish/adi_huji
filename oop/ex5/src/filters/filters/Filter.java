@@ -2,10 +2,13 @@ package filters.filters;
 
 import filesprocessing.FileInfo;
 
-/**
- * Created by adi on 25/05/17.
- */
+
 public interface Filter {
 
-    public boolean filter(FileInfo toFilter);
+    /**
+     * Filters the  FileInfo by a certain filter.
+     * @param toFilter FileInfo to filter
+     * @return true if the FileInfo passes the filter, false otherwise.
+     */
+    boolean filter(FileInfo toFilter);
 }

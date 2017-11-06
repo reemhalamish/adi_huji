@@ -1,20 +1,26 @@
 package filters.filters;
 
-import exceptions.FilterException;
 import filesprocessing.FileInfo;
 
-/**
- * Created by adi on 25/05/17.
- */
-public class FileNameFilter implements Filter {
+
+class FileNameFilter implements Filter {
 
     /* fields */
     private String fileName;
 
-    public FileNameFilter(String fileName) {
-            this.fileName = fileName;
+    /**
+     * Creates a filter that filters through only files that their name match the given name.
+     * @param fileName string of the file name by which to filter files.
+     */
+    FileNameFilter(String fileName) {
+        this.fileName = fileName;
     }
 
+    /**
+     * Filters a file through only if it's name matches the given string in the constructor
+     * @param toFilter FileInfo to filter
+     * @return true if name matches, false otherwise.
+     */
     @Override
     public boolean filter(FileInfo toFilter) {
         return toFilter.name.equals(fileName);
